@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
+import { ReactElement } from "react";
 import { Product } from "@/config/products.config";
 import { formatProductStatus } from "@/lib/utils";
 import { scaleIn } from "@/lib/animations/variants";
@@ -10,7 +11,7 @@ interface ProductCardProps {
   index: number;
 }
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, ReactElement> = {
   flame: (
     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
@@ -58,7 +59,6 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       className="group relative"
     >
       <div className="card-base p-8 h-full flex flex-col relative overflow-hidden cursor-default">
-        {/* Hover background glow */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
           style={{
@@ -67,7 +67,6 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           }}
         />
 
-        {/* Top row: Icon + Status */}
         <div className="flex items-start justify-between mb-8">
           <div
             className="w-12 h-12 flex items-center justify-center border border-border-default text-brand-primary group-hover:border-brand-primary/50 group-hover:bg-brand-primary/5 transition-all duration-300"
@@ -81,30 +80,24 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           </span>
         </div>
 
-        {/* Category */}
         <p className="text-label-sm text-ink-muted uppercase tracking-widest mb-3">
           {product.category}
         </p>
 
-        {/* Product Name */}
         <h3 className="font-display text-display-md text-ink-primary mb-3 group-hover:text-brand-primary transition-colors duration-300">
           {product.name}
         </h3>
 
-        {/* Tagline */}
         <p className="text-body-md text-brand-primary/70 mb-4 italic font-display">
           {product.tagline}
         </p>
 
-        {/* Divider */}
         <div className="w-8 h-px bg-border-strong mb-6 group-hover:w-16 group-hover:bg-brand-primary transition-all duration-500" />
 
-        {/* Description */}
         <p className="text-body-md text-ink-secondary leading-relaxed flex-1">
           {product.description}
         </p>
 
-        {/* Bottom accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary/0 to-transparent group-hover:via-brand-primary/50 transition-all duration-700" />
       </div>
     </motion.div>
